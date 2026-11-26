@@ -12,6 +12,12 @@ const equipment = [
 const category = document.getElementById("category");
 const results = document.getElementById("results");
 const equipmentList = document.getElementById("equipment-list");
+const requestForm = document.getElementById("request-form");
+const selectedKit = document.getElementById("selected-kit");
+const requestList = document.getElementById("request-list");
+const requestStatus = document.getElementById("request-status");
+
+let selectedEquipment = "";
 
 function showEquipment() {
   const selectedCategory = category.value;
@@ -25,12 +31,53 @@ function showEquipment() {
 
   for (const item of matchingEquipment) {
     const listing = document.createElement("li");
-    listing.textContent = `${item.name} — ${item.lender}`;
+    listing.append(document.createTextNode(`${item.name} — ${item.lender} `));
+
+    const requestButton = document.createElement("button");
+    requestButton.type = "button";
+    requestButton.textContent = "Request kit";
+    requestButton.dataset.itemName = item.name;
+
+    listing.append(requestButton);
     list.append(listing);
   }
 
   equipmentList.replaceChildren(list);
 }
+
+equipmentList.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-item-name]");
+
+  if (!button) {
+    return;
+  }
+
+  selectedEquipment = button.dataset.itemName;
+  selectedKit.textContent = `Kit requested: ${selectedEquipment}`;
+  requestStatus.textContent = "";
+  requestForm.hidden = false;
+  document.getElementById("borrowing-group").focus();
+  requestForm.scrollIntoView({ behavior: "smooth", block: "nearest" });
+});
+
+requestForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(requestForm);
+  const borrowingGroup = formData.get("borrowingGroup").trim();
+  const pickupWindow = formData.get("pickupWindow");
+  const purpose = formData.get("purpose").trim();
+
+  const request = document.createElement("li");
+  request.textContent =
+    `${selectedEquipment} — ${borrowingGroup}; pickup: ${pickupWindow}; purpose: ${purpose}`;
+  requestList.append(request);
+
+  requestStatus.textContent = "Demo request added.";
+  requestForm.reset();
+  requestForm.hidden = true;
+  selectedEquipment = "";
+});
 
 category.addEventListener("change", showEquipment);
 showEquipment();
