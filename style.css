@@ -76,3 +76,74 @@ footer {
   color: #43574e;
   font-size: 0.9rem;
 }
+#category {
+  display: block;
+  margin-top: 0.35rem;
+}
+
+#equipment-list ul,
+#request-list {
+  padding-left: 1.25rem;
+}
+
+#equipment-list li {
+  margin: 0.75rem 0;
+}
+
+button {
+  margin-left: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  border: 0;
+  border-radius: 0.4rem;
+  background: #153c32;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #245b4c;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #bd6b16;
+  outline-offset: 2px;
+}
+
+.request-form {
+  display: grid;
+  gap: 0.6rem;
+  max-width: 32rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #d5dfd8;
+  border-radius: 0.75rem;
+  background: #f5f6f2;
+}
+
+.request-form[hidden] {
+  display: none;
+}
+
+.request-form h3,
+.request-form p {
+  margin: 0;
+}
+
+.request-form input,
+.request-form select,
+.request-form textarea {
+  width: 100%;
+  padding: 0.55rem;
+  border: 1px solid #9aaca1;
+  border-radius: 0.35rem;
+  font: inherit;
+}
+
+.request-form button {
+  justify-self: start;
+  margin: 0.5rem 0 0;
+}
