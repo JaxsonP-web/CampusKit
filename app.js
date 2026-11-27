@@ -20,13 +20,19 @@ const requestStatus = document.getElementById("request-status");
 let selectedEquipment = "";
 
 function showEquipment() {
-  const selectedCategory = category.value;
-  const matchingEquipment = equipment.filter(
+ const selectedCategory = category.value;
+  const networkSize = document.getElementById("network-size").value;
+  const availableEquipment = networkSize === "pilot"
+    ? equipment.slice(0, 2)
+    : equipment;
+
+  const matchingEquipment = availableEquipment.filter(
     (item) => selectedCategory === "all" || item.category === selectedCategory
   );
 
-  results.textContent = `Showing ${matchingEquipment.length} of ${equipment.length} items.`;
-
+  results.textContent = matchingEquipment.length
+    ? `Showing ${matchingEquipment.length} of ${availableEquipment.length} items.`
+    : "No equipment in this category for this network. Try Expanded.";
   const list = document.createElement("ul");
 
   for (const item of matchingEquipment) {
@@ -80,4 +86,5 @@ requestForm.addEventListener("submit", (event) => {
 });
 
 category.addEventListener("change", showEquipment);
+document.getElementById("network-size").addEventListener("change", showEquipment);
 showEquipment();
