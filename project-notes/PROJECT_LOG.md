@@ -13,9 +13,14 @@
 - **What broke and how I fixed it:** I originally put the stylesheet link inside the `<title>` tag. I moved it outside the title, keeping it in the `<head>`, so the page could load the CSS.
 - **Related commits:** `Create index.html for CampusKit application` and `Add stylesheet link to index.html`.
 
+### November 26, 2026 — Adding the borrowing request form
+- **Goal** — I wanted students to be able to click Request kit beside the item they wanted to borrow.
+- **AI prompt (paraphrased)** — I asked GitHub Copilot to help me add a Request kit button and a form for the borrowing group, pickup time, and purpose.
+- **What worked** — I tried the form on my Mac. I picked Music, saw the two results, and sent a test request for the acoustic guitar. it then showed up under requests.
+- **Related commits** — `add borrowing request form` and `Implement equipment request feature in app.js`.
 ### November 26, 2026 — Building the Pilot/Expanded network demo
 
-- **Goal** — Show how students get more equipment choices as more campus groups join CampusKit.
+- **Goal** — I wanted to show how students would have more gear to choose from if more campus groups joined.
 - **AI prompt (paraphrased)** — I asked ChatGPT where to put the code for the Pilot/Expanded dropdown in `index.html` and how to connect it to the equipment filter in `app.js`.
 - **What worked** — Pilot had 2 listings and Expanded had 8. With Music selected, switching to Expanded made the acoustic guitar and digital keyboard appear.
 - **What broke and how I fixed it** — When I pasted the Javascript for the Pilot expanded dropdown into index.html by mistake I meant to put it in app.js but I wasn't paying attention and thankfully I caught onto it before I clicked committed changes so it didn't mess me up to bad. So I canceled that edit and put the code in app.js .
