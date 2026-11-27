@@ -147,3 +147,78 @@ textarea:focus-visible {
   justify-self: start;
   margin: 0.5rem 0 0;
 }
+/* CampusKit visual refresh */
+:root {
+  --campuskit-navy: #142b45;
+  --campuskit-cream: #f7f3e8;
+  --campuskit-teal: #007f78;
+  --campuskit-text: #243447;
+}
+
+body {
+  background: var(--campuskit-cream);
+  color: var(--campuskit-text);
+}
+
+header {
+  background: var(--campuskit-navy);
+  color: #fff;
+}
+
+header a {
+  color: #fff;
+}
+
+main > section,
+article,
+.card,
+.section {
+  background: #fff;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  min-height: 44px;
+  padding: 0.7rem 1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: var(--campuskit-teal);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+select,
+input,
+textarea {
+  min-height: 44px;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #8795a1;
+  border-radius: 0.4rem;
+  color: var(--campuskit-text);
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 3px solid #f0a629;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  button,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  select {
+    min-height: 48px;
+  }
+}
